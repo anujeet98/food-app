@@ -1,0 +1,28 @@
+.header{
+	text-align: center;
+	font-size: 40px;
+	color:white;
+}
+.rest{
+	position: absolute;
+	display: block;
+	box-sizing: border-box;
+	right: 350px;
+}
+#container20{
+	margin-top:5%;
+	margin-left:35%;
+
+   }
+
+#parentcont{
+	margin-top:25%;
+
+
+}
+body{
+    background-image:url("./dbmsimage/admin.jpg");
+    background-repeat:no-repeat;
+        background-size: cover;
+            color: black;
+}

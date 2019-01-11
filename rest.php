@@ -12,13 +12,17 @@
 <body id=background>
     <div id="container10">
         <div id="search-box">
-            <form name="form" action="rest.php" method ="POST">
+            <form name="form" action="rest.php" method ="POST" style="background-color:black;">
            <input type="text" name="search-box" id="search-box" placeholder=" Type a search " >
 
           <button type="submit" id="sea_btn"> <i class="fa fa-search"  aria-hidden="true"></i></button>
+          <a href="login.php" style="color:white; background-color: black;">login</a>
+          <a href="register.php" style="color:white; background-color: black;">signup</a>
         </form>  
          </div>
-    
+      <p> &nbsp&nbsp <a href="index.php?logout='1'" style="text-decoration:none;color: white;"><span class="l1">logout</span></a> </p>
+      <p><a href="admin.php" style="text-decoration:none;color: white;"><span class="l1">admin</span></a> </p>
+      <p><a href="restadmin.php" style="text-decoration:none;color: white;"><span class="l1">restaurant admin</span></a> </p>
     </div>     
     
     
@@ -34,10 +38,10 @@
    $connect=mysqli_connect("localhost","id7486334_root","rootoor","id7486334_employe");
    if(strlen($val)==0)
    {
-       $sql="select RID,image,name,rating,location from restaurant;";
+       $sql="select * from restaurant";
    }
    else{
-       $sql="select RID,image,name,rating,location from restaurant where name='$val';";
+       $sql="select * from restaurant where name='$val';";
    }
    $result=mysqli_query($connect,$sql);
    /*     
@@ -54,14 +58,13 @@
        	     {
        	     	while($row=mysqli_fetch_array($result))
        	     	{   
-       	     	    echo $row[0][0];
        	     		$output .='
        	     		    <div>
        	     		    <div id=container12>
-                        <img src =" data:image/jpeg;base64,'.base64_encode($row["image"]).' " id=dom>
+                        <img src ="dbmsimage/'.$row["img_name"].'" alt="img" id="dom">
                         '.$row["name"].'<span id=tab>'.$row["rating"].'</span>
                         <div id=loc>'.$row["location"].'</div>
-                        <a href="grid.php?id='.$row["RID"].'"><button id=button>ORDER ONLINE</button></a>
+                        <a href="grid.php?name='.$row["name"].'"><button id=button>ORDER ONLINE</button></a>
                         </div>
        	     	        </div>';
  
@@ -71,7 +74,6 @@
        	     {
        	     	$output="no product found";
        	     }
-       	     echo $row;
        	     echo $output;
        	   ?>
 
